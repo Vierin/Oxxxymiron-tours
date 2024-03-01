@@ -1,6 +1,8 @@
+import News from "../News/News";
 import TourItems from "../Tour/TourItems";
 import Tracks from "../Tracks/Tracks";
 import MainBanner from "./MainBanner";
+import ShopBanner from "./ShopBanner";
 import TourBanner from "./TourBanner";
 
 const Home = () => (
@@ -9,6 +11,8 @@ const Home = () => (
         <TourItems />
         <TourBanner />
         <Tracks />
+        <ShopBanner />
+        <News />
     </main>
 );
 

@@ -25,7 +25,7 @@ const TourItem = ({
             >
                 <div className="tour-item__info">
                     <div className="tour-item__date">
-                        {getLocaleDateString(date)}
+                        {getLocaleDateString(date, {})}
                     </div>
                     <p className="tour-item__place">{place}</p>
                 </div>

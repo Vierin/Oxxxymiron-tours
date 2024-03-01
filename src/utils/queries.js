@@ -17,6 +17,23 @@ export const tourItemCollectionQuery = `
 }
 `;
 
+export const newsItemCollectionQuery = `
+{
+    newsItemCollection {
+        items {
+            sys {
+                id
+            }
+            title
+            date
+            cover {
+                url
+            }
+        }
+    }
+}
+`;
+
 export const trackItemCollectionQuery = `
 {
     trackCollection {

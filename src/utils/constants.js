@@ -46,3 +46,8 @@ export const SOCIALS = [
         link: "https://open.spotify.com/artist/5c3GLXai8YOMid29ZEuR9y",
     },
 ];
+
+export const SLIDER_BUTTON_TYPES = {
+    PREV: "PREV",
+    NEXT: "NEXT",
+};

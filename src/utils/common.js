@@ -23,10 +23,12 @@ export const sortByDate = (arr) => {
     return arr.sort((a, b) => new Date(a.date) - new Date(b.date));
 };
 
-export const getLocaleDateString = (date) => {
-    return new Date(date).toLocaleDateString("en-US", {
-        month: "numeric",
-        day: "numeric",
-        year: "numeric",
+export const getLocaleDateString = (
+    date,
+    { month = "numeric", day = "numeric", year = "numeric" }
+) =>
+    new Date(date).toLocaleDateString("en-US", {
+        month,
+        day,
+        year,
     });
-};
