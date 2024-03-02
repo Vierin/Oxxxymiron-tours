@@ -1,7 +1,6 @@
 import { MENU } from "../../utils/constants";
 import Logo from "../Logo/Logo";
 import { NavLink } from "react-router-dom";
-import Socials from "../Socials/Socials";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Hamburger from "./Hamburger";
 
@@ -30,7 +29,12 @@ const Header = () => (
                         </AnimationOnScroll>
                     ))}
                 </nav>
-                <Socials />
+                <button className="cart-btn">
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/cart.svg`}
+                        alt=""
+                    />
+                </button>
                 <Hamburger />
             </header>
         </div>

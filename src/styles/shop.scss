@@ -1,0 +1,60 @@
+.shop {
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 60px;
+        column-gap: 40px;
+        margin-top: 40px;
+
+        &__item {
+            &-info {
+                font-size: 16px;
+                line-height: 19.36px;
+                margin-top: 24px;
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
+            }
+
+            &-img {
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.5s ease-in-out;
+                }
+            }
+
+            &-title {
+                overflow: hidden;
+
+                span {
+                    position: relative;
+                    display: block;
+
+                    &::after {
+                        content: attr(data-text);
+                        position: absolute;
+                        inset: 0;
+                        transform: translateY(120%);
+                    }
+                }
+            }
+
+            &-link {
+                &:hover {
+                    .shop-list__item-img img {
+                        transform: scale(1.1);
+                    }
+
+                    .shop-list__item-title span {
+                        transform: translateY(-120%);
+                        transition: transform 0.35s ease-in-out;
+                    }
+                }
+            }
+        }
+    }
+}

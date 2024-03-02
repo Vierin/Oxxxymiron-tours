@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { request } from "../../utils/common";
-import { newsItemCollectionQuery, newsItemQuery } from "../../utils/queries";
+import {
+    productsItemCollectionQuery,
+    productsItemQuery,
+} from "../../utils/queries";
 
 const initialState = {
     items: [],
@@ -8,14 +11,13 @@ const initialState = {
     isLoading: false,
 };
 
-export const getNewsItems = createAsyncThunk(
-    "newsItems/getNewsItems",
+export const getProductsItems = createAsyncThunk(
+    "products/getProducts",
     async (_, thunkAPI) => {
         try {
-            const data = await request(newsItemCollectionQuery);
+            const data = await request(productsItemCollectionQuery);
 
-            const { items } = data.newsItemCollection;
-
+            const { items } = data.productsItemCollection;
             return items;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
@@ -23,46 +25,46 @@ export const getNewsItems = createAsyncThunk(
     }
 );
 
-export const getNewsItem = createAsyncThunk(
-    "newsItem/getNewsItem",
+export const getProductsItem = createAsyncThunk(
+    "product/getProduct",
     async (id, thunkAPI) => {
         try {
-            const data = await request(newsItemQuery(id));
-            console.log(data);
-            return data.newsItem;
+            const data = await request(productsItemQuery(id));
+            console.log("query", data.productsItem);
+            return data.productsItem;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
     }
 );
 
-const newsItemsSlice = createSlice({
-    name: "newsItems",
+const productsSlice = createSlice({
+    name: "productsItems",
     initialState,
 
     extraReducers: (builder) => {
         builder
-            .addCase(getNewsItems.pending, (state) => {
+            .addCase(getProductsItems.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getNewsItems.fulfilled, (state, { payload }) => {
+            .addCase(getProductsItems.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.items = payload;
             })
-            .addCase(getNewsItems.rejected, (state) => {
+            .addCase(getProductsItems.rejected, (state) => {
                 state.isLoading = false;
             })
-            .addCase(getNewsItem.pending, (state) => {
+            .addCase(getProductsItem.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getNewsItem.fulfilled, (state, { payload }) => {
+            .addCase(getProductsItem.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.item = payload;
             })
-            .addCase(getNewsItem.rejected, (state) => {
+            .addCase(getProductsItem.rejected, (state) => {
                 state.isLoading = false;
             });
     },
 });
 
-export default newsItemsSlice.reducer;
+export default productsSlice.reducer;

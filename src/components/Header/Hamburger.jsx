@@ -24,7 +24,7 @@ const Hamburger = () => {
 
                 <ul className="menu-mobile__items">
                     {MENU.map(({ link, name }, i) => (
-                        <li className="menu-mobile__item">
+                        <li className="menu-mobile__item" key={link}>
                             <NavLink
                                 className={({ isActive }) =>
                                     !link.startsWith("#") && isActive

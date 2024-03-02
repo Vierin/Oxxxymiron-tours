@@ -18,6 +18,20 @@ header {
             width: 32px;
         }
     }
+
+    .cart-btn {
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+        max-width: 22px;
+        margin-left: auto;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
 }
 
 .socials {

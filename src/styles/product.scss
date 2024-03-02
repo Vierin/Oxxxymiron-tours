@@ -1,0 +1,39 @@
+.product {
+    display: flex;
+    gap: 24px;
+    margin: 40px auto 83px;
+
+    > * {
+        flex-basis: 50%;
+    }
+
+    &__title {
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    &__description {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        background: #fff;
+        color: #000;
+        width: 100%;
+        text-transform: uppercase;
+        font-size: 15px;
+        padding: 11px;
+        margin-top: auto;
+    }
+}

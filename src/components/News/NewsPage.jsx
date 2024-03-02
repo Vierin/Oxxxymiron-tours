@@ -20,7 +20,10 @@ const NewsPage = () => {
                         {items.map(
                             ({ title, date, sys: { id }, cover: { url } }) => {
                                 return (
-                                    <div className="news-list__item">
+                                    <div
+                                        className="news-list__item"
+                                        key={title}
+                                    >
                                         <div
                                             className="news-list__item-img"
                                             style={{

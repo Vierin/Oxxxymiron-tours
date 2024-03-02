@@ -52,6 +52,39 @@ export const newsItemQuery = (id) => `
     }
 `;
 
+export const productsItemCollectionQuery = `
+{
+    productsItemCollection {
+        items {
+            sys {
+                id
+            }
+            title
+            price
+            image {
+                url
+            }
+        }
+    }
+}
+`;
+
+export const productsItemQuery = (id) => `
+    {
+        productsItem(id:  "${id}") {
+            sys {
+                id
+            },
+            title
+            price
+            image {
+                url
+            }
+            description
+        }
+    }
+`;
+
 export const trackItemCollectionQuery = `
 {
     trackCollection {
