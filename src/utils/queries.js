@@ -34,6 +34,24 @@ export const newsItemCollectionQuery = `
 }
 `;
 
+export const newsItemQuery = (id) => `
+    {
+        newsItem(id:  "${id}") {
+            title
+            date
+            description {
+                json
+            }
+            cover {
+                url
+            }
+            sys {
+                id
+            }
+        }
+    }
+`;
+
 export const trackItemCollectionQuery = `
 {
     trackCollection {
@@ -43,6 +61,7 @@ export const trackItemCollectionQuery = `
             }
             date
             title
+            description
             link {
                 url
             }

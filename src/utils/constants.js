@@ -1,6 +1,9 @@
 /* eslint-disable */
 export const MAIN_URL = `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}`;
 
+export const ASSET_URL = (id) =>
+    `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/assets/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`;
+
 export const MENU = [
     {
         name: "Tours",
@@ -8,7 +11,7 @@ export const MENU = [
     },
     {
         name: "Tracks",
-        link: "#tracks",
+        link: "tracks",
     },
     {
         name: "News",

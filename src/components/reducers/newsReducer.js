@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { request } from "../../utils/common";
-import { newsItemCollectionQuery } from "../../utils/queries";
+import { newsItemCollectionQuery, newsItemQuery } from "../../utils/queries";
 
 const initialState = {
     items: [],
+    item: null,
     isLoading: false,
 };
 
@@ -16,6 +17,19 @@ export const getNewsItems = createAsyncThunk(
             const { items } = data.newsItemCollection;
 
             return items;
+        } catch (error) {
+            return thunkAPI.rejectWithValue({ error: error.message });
+        }
+    }
+);
+
+export const getNewsItem = createAsyncThunk(
+    "newsItem/getNewsItem",
+    async (id, thunkAPI) => {
+        try {
+            const data = await request(newsItemQuery(id));
+
+            return data.newsItem;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
         }
@@ -36,6 +50,16 @@ const newsItemsSlice = createSlice({
                 state.items = payload;
             })
             .addCase(getNewsItems.rejected, (state) => {
+                state.isLoading = false;
+            })
+            .addCase(getNewsItem.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getNewsItem.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.item = payload;
+            })
+            .addCase(getNewsItem.rejected, (state) => {
                 state.isLoading = false;
             });
     },

@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getNewsItems } from "../reducers/newsReducer";
+import React, { useCallback, useRef } from "react";
+
 import Section from "../Section/Section";
-import SectionTitle from "../SectionTitle/SectionTitle";
+import SectionTitle from "../Title/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
@@ -10,17 +9,14 @@ import ScrollAnimation from "react-animate-on-scroll";
 import { Link } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import { SLIDER_BUTTON_TYPES } from "../../utils/constants";
+import Loader from "../Loader/Loader";
+import { useNewsItems } from "../../hooks/useNewsItems";
 
 const News = () => {
     const { PREV, NEXT } = SLIDER_BUTTON_TYPES;
     const sliderRef = useRef(null);
-    const dispatch = useDispatch();
 
-    const { items = [], isLoading } = useSelector(({ news }) => news);
-
-    useEffect(() => {
-        dispatch(getNewsItems());
-    }, [dispatch]);
+    const { items = [], isLoading } = useNewsItems();
 
     const handleButtonClick = useCallback(
         (type) => {
@@ -38,7 +34,7 @@ const News = () => {
             <div className="container">
                 <SectionTitle title="News" />
                 {isLoading ? (
-                    <p>Loading...</p>
+                    <Loader />
                 ) : (
                     <Swiper
                         ref={sliderRef}

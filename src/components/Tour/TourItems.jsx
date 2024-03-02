@@ -1,20 +1,13 @@
-import { useEffect } from "react";
 import Section from "../Section/Section";
-import SectionTitle from "../SectionTitle/SectionTitle";
-import { useDispatch, useSelector } from "react-redux";
-import { getTourItems } from "../reducers/tourReducer";
+import SectionTitle from "../Title/SectionTitle";
 import TourItem from "./TourItem";
 import { Link } from "react-router-dom";
 import { sortByDate } from "../../utils/common";
+import Loader from "../Loader/Loader";
+import { useTourItems } from "../../hooks/useTourItems";
 
 const TourItems = () => {
-    const dispatch = useDispatch();
-
-    const { items = [], isLoading } = useSelector(({ tour }) => tour);
-
-    useEffect(() => {
-        dispatch(getTourItems());
-    }, [dispatch]);
+    const { items = [], isLoading } = useTourItems();
 
     const filtered = sortByDate(
         items
@@ -27,7 +20,7 @@ const TourItems = () => {
             <div className="container">
                 <SectionTitle title="Tour" />
                 {isLoading ? (
-                    <p>Loading...</p>
+                    <Loader />
                 ) : (
                     <ul className="tour__list">
                         {filtered.map((item, i) => (
