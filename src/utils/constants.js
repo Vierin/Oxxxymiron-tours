@@ -54,3 +54,5 @@ export const SLIDER_BUTTON_TYPES = {
     PREV: "PREV",
     NEXT: "NEXT",
 };
+
+export const SIZES = ["S", "M", "L"];

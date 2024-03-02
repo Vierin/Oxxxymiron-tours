@@ -35,5 +35,100 @@
         font-size: 15px;
         padding: 11px;
         margin-top: auto;
+        cursor: pointer;
+        position: relative;
+        border: 1px solid #fff;
+
+        span {
+            position: relative;
+            z-index: 2;
+            transition: color 0.25s ease-in-out;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #000;
+            transform: translateY(105%);
+            transition: transform 0.25s ease-in-out;
+        }
+
+        &:hover {
+            color: #fff;
+
+            &::after {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &__sizes {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            color: #000;
+            font-weight: 500;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            transition: border-color 0.3s ease-in;
+            overflow: hidden;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: #fff;
+                z-index: -2;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            &.is-active {
+                color: #fff;
+                border-color: rgba(#db00ff, 0.5);
+
+                &::after {
+                    transform: translateY(-105%);
+                }
+            }
+        }
+    }
+
+    &__counter {
+        margin-top: 20px;
+        display: flex;
+        gap: 4px;
+
+        &-value {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 100%;
+            font-size: 15px;
+            background: #fff;
+            color: rgba(#000, 0.8);
+        }
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 3px;
+        }
+
+        &-button {
+            background: #fff;
+            color: #000;
+            width: 52px;
+        }
     }
 }

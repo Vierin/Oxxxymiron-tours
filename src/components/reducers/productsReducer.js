@@ -30,7 +30,6 @@ export const getProductsItem = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const data = await request(productsItemQuery(id));
-            console.log("query", data.productsItem);
             return data.productsItem;
         } catch (error) {
             return thunkAPI.rejectWithValue({ error: error.message });
