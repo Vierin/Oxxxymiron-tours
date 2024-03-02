@@ -6,12 +6,10 @@ import TourItem from "./TourItem";
 
 const TourPage = () => {
     const { items = [], isLoading } = useTourItems();
-
-    const [activeTab, setActiveTab] = useState();
-    const [filtered, setFiltered] = useState([]);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const tabs = [...new Set(items.map(({ country }) => country))]; //фильтруем по странам
+    const [activeTab, setActiveTab] = useState(null);
+    const [filtered, setFiltered] = useState([]);
 
     const toggleTab = useCallback(
         (tab) => {
@@ -22,7 +20,7 @@ const TourPage = () => {
     );
 
     useEffect(() => {
-        if (tabs.length && !activeTab) setActiveTab(tabs[0]);
+        if (tabs.length && !activeTab) toggleTab(tabs[0]);
     }, [tabs, toggleTab, activeTab]);
 
     return (

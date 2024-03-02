@@ -5,12 +5,12 @@ import SectionTitle from "../Title/SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
-import ScrollAnimation from "react-animate-on-scroll";
 import { Link } from "react-router-dom";
 import Icon from "../Icon/Icon";
 import { SLIDER_BUTTON_TYPES } from "../../utils/constants";
 import Loader from "../Loader/Loader";
 import { useNewsItems } from "../../hooks/useNewsItems";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 const News = () => {
     const { PREV, NEXT } = SLIDER_BUTTON_TYPES;
@@ -43,13 +43,24 @@ const News = () => {
                         className="news"
                         navigation
                         modules={[Navigation]}
+                        breakpoints={{
+                            1366: {
+                                slidesPerView: 4,
+                            },
+                            720: {
+                                slidesPerView: 3,
+                            },
+                            360: {
+                                slidesPerView: 2,
+                            },
+                        }}
                     >
                         {items.map(
                             ({ title, sys: { id }, cover: { url } }, i) => (
                                 <SwiperSlide key={id} className="news__item">
-                                    <ScrollAnimation
-                                        animateIn="fadeInLeft"
-                                        animateOut="fadeOutLeft"
+                                    <AnimationOnScroll
+                                        animateIn="animate__fadeInLeft"
+                                        animateOut="animate__fadeOutLeft"
                                         delay={i * 100}
                                     >
                                         <Link
@@ -63,7 +74,7 @@ const News = () => {
                                                 {title}
                                             </h3>
                                         </Link>
-                                    </ScrollAnimation>
+                                    </AnimationOnScroll>
                                 </SwiperSlide>
                             )
                         )}

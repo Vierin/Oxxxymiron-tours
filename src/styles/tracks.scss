@@ -179,7 +179,8 @@
         }
 
         .icon {
-            &-pause {
+            &-pause,
+            &-play {
                 width: 100px;
                 height: 100px;
                 fill: $light;

@@ -1,3 +1,5 @@
+import "animate.css/animate.min.css";
+
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import AppRoutes from "./AppRoutes";

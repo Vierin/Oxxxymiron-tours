@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Section from "../Section/Section";
 import SectionTitle from "../Title/SectionTitle";
-import ScrollAnimation from "react-animate-on-scroll";
 import Icon from "../Icon/Icon";
 import { getLocaleDateString } from "../../utils/common";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import { useTrackItems } from "../../hooks/useTrackItems";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 const Tracks = () => {
     const { items = [], isLoading } = useTrackItems();
@@ -48,12 +48,17 @@ const Tracks = () => {
                                     date,
                                 } = track;
 
+                                const iconName =
+                                    playing && id === currentTrack?.sys.id
+                                        ? "pause"
+                                        : "play";
+
                                 return (
-                                    <ScrollAnimation
+                                    <AnimationOnScroll
                                         key={id}
                                         className="track-item"
-                                        animateIn="fadeInLeft"
-                                        animateOut="fadeOutRight"
+                                        animateIn="animate__fadeInLeft"
+                                        animateOut="animate__fadeOutRight"
                                     >
                                         <div
                                             className="track"
@@ -66,11 +71,7 @@ const Tracks = () => {
                                                     src={cover.url}
                                                     alt={title}
                                                 />
-                                                {playing &&
-                                                    currentTrack.sys.id ===
-                                                        id && (
-                                                        <Icon name="pause" />
-                                                    )}
+                                                <Icon name={iconName} />
                                             </div>
                                             <p className="track-date">
                                                 {getLocaleDateString(date, {
@@ -82,7 +83,7 @@ const Tracks = () => {
                                                 {title}
                                             </h3>
                                         </div>
-                                    </ScrollAnimation>
+                                    </AnimationOnScroll>
                                 );
                             })}
                     </div>

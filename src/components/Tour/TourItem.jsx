@@ -1,8 +1,7 @@
-import React from "react";
-import ScrollAnimation from "react-animate-on-scroll";
-
 import Icon from "../Icon/Icon";
+
 import { getLocaleDateString } from "../../utils/common";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 
 const TourItem = ({
     date,
@@ -10,16 +9,17 @@ const TourItem = ({
     place,
     ticketLink,
     videoLink,
-    i,
     soldOut,
-    offset = 260,
+    country,
+    i,
+    offset = 120,
 }) => {
     return (
         <li>
-            <ScrollAnimation
+            <AnimationOnScroll
                 className="tour-item"
-                animateIn="fadeInLeft"
-                animateOut="fadeOutRight"
+                animateIn="animate__fadeInLeft"
+                animateOut="animate__fadeOutRight"
                 delay={i * 100}
                 offset={offset}
             >
@@ -29,12 +29,15 @@ const TourItem = ({
                     </div>
                     <p className="tour-item__place">{place}</p>
                 </div>
-                <p className="tour-item__city">{city}</p>
+
+                <p className="tour-item__city">
+                    {city}, {country}
+                </p>
+
                 {!soldOut ? (
                     <a
                         href={ticketLink || videoLink}
-                        target="_blank"
-                        rel="noreferrer"
+                        target="__black"
                         className="tour-item__button"
                     >
                         {ticketLink ? (
@@ -51,7 +54,7 @@ const TourItem = ({
                         SOLD OUT
                     </button>
                 )}
-            </ScrollAnimation>
+            </AnimationOnScroll>
         </li>
     );
 };
