@@ -29,6 +29,9 @@ const NewsSingle = () => {
                         <p className="news-single__item-date">
                             {getLocaleDateString(item.date, { month: "short" })}
                         </p>
+                        <div className="news-single__item-img">
+                            <img src={item.cover.url} alt={item.title} />
+                        </div>
                         <div className="news-single__item-content">
                             {jsonToText(item.description.json)}
                         </div>
