@@ -13,6 +13,7 @@ const ProductPage = () => {
     const { id } = useParams();
 
     const [activeSize, setActiveSize] = useState(null);
+    // eslint-disable-next-line
     const [totalCount, setTotalCount] = useState(null);
 
     const { item, isLoading } = useSelector(({ products }) => products);
