@@ -3,10 +3,10 @@ import Logo from "../Logo/Logo";
 import { NavLink } from "react-router-dom";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import Hamburger from "./Hamburger";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Header = () => {
-    const totalCount = useSelector(({ cart }) => cart.totalCount);
+    // const totalCount = useSelector(({ cart }) => cart.totalCount);
 
     return (
         <section className="header">
@@ -38,7 +38,7 @@ const Header = () => {
                             src={`${process.env.PUBLIC_URL}/images/cart.svg`}
                             alt=""
                         />
-                        <span>{totalCount}</span>
+                        {/* <span>{totalCount}</span> */}
                     </button>
                     <Hamburger />
                 </header>
